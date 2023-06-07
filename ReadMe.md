@@ -1,64 +1,62 @@
-# Sprint Gün Projesi Görevi: Cypress Testi
+# Sprint Gün Projesi: Gelişmiş Form Yönetimi - Kullanıcı Katılımı
 
-Gün Projesi görevi, öğrencilerin bağımsız olarak üzerinde çalıştıkları öğleden sonraki proje veya görevdir. Bu görev, eğitmenle daha önce tamamlanan projeyi geliştirir.
+## Proje Açıklaması
 
-## Tek Sayfa Uygulamaları
-
-## Cypress.io
-
-## Hedefler
-
-- uçtan uca testin ne olduğunu ve önemini açıklamak
-- testler yazmak ve Elementler ile etkileşim kurmak için Cypress GUI'yi kullanmak
-- kontrollü inputları test etmek için Cypress'i kullanmak
-- tüm testleri herhangi bir kullanıcı arayüzü olmadan çalıştırmak
-
-## Talimatlar
-
-Bu challenge'da, son yaptığınız form uygulamanızın hatalarını ayıklamak için Cypress ile testler yazacaksınız.
+Şimdiye kadar basitten karmaşığa birçok farklı form yönetimi stili gördük. Bugün içinizdeki form sihirbazını serbest bırakacağız! 🧙
 
 ## Talimatlar
 
 ### Görev 1: Projeyi Kurun
 
-Bu proje bir önceki yaptığınız uygulamanın devamıdır.
+- [ ] Forklayın, klonlayın, klasöre girin.
+- [ ] `npx create-react-app kullanici-katilimi` komutuyla boş bir çalışma başlatın.
+- [ ] Oluşturulan `kullanici-katilimi` klasörüne girin.
+- [ ] `npm` yi kullanarak, aşağıdaki bağımlılıkları React appinize ekleyin:
+  - `yup`
+  - `axios`
+- [ ] `Form.js` adında bir bileşen oluşturun, `App.js` dosyanıza import edin, ve bileşen için JSX lerinizi buraya yazın.
 
-- [ ] Önceki projenizin klasörüne girin
-- [ ] Değişiklikler yapın ve aynı brancha yükleyin
+### Görev 2: MVP
 
-Cypress kurulumu için `npm install cypress --save-dev` komutunu girin ve  `npx cypress open` yazın. Bu, "Cypress 10'a Hoş Geldiniz!" başlığı ve altında "Cypress 10'a Devam Et" yazan buton içeren bir diyalog açacaktır. Bu butona tıklayın, ardından bir sonraki ekranın en altına gidin ve arka arkaya üç geçiş butonuna tıklayın (birini tıkladıktan sonra sonraki bölüm genişleyecek ve bir sonraki geçiş seçimini tıklamanıza izin verecektir). Bir sonraki ekranda 'e2e' seçeneğini seçin ve bir sonraki ekranda 'Scaffold Example Specs' seçeneğini seçin, ardından istediğiniz bir tarayıcı seçin ve 'E2E Testini Başlat' düğmesine tıklayın.
+#### gelişmiş Formunuzu yaratın
 
-Oradan, VSCode'da yeni oluşturduğunuz cypress klasöründe, e2e klasörüne gidin ve `form.cy.js` adlı yeni bir dosya oluşturun. Artık testlerinizi yazmaya hazırsınız! (Dosya isminde ".cy" olduğundan emin olun, aksi takdirde Cypress testlerinizi bulamaz!)
+Yeni bir kullanıcıyı sistemimize dahil etmek için bir form oluşturmak istiyoruz. Yeni kullanıcımız hakkında en azından aşağıdaki bilgilere ihtiyacımız var:
 
-### Görev 2a: Testleri yazmak ve çalıştırmak (MVP)
+- [ ] İsim (ismi, soyismi)
+- [ ] Email
+- [ ] Şifre
+- [ ] Kullanım Şartları (Terms of Service) (checkbox)
+- [ ] Gönder butonu (formu göndermek için).
 
-Bu görevi tamamlamak için aşağıdaki testleri yazmanız ve çalıştırmanız gerekecek. Testlerin başarısız olma nedeni mantıklıysa, testi geçmek önemli değildir.
+#### Form Validation(doğrulama) ve Hata Mesajları Uygulayın
 
-Şunları yapacak testleri ayarlayın:
+Form doğrulama, kullanıcıya bir uygulamanın ince elenmiş sık dokunmuş hissini veren yönlerinden biridir. Bunu göz önünde bulundurarak, aşağıdakileri uygulayın:
 
-- [ ] `isim` inputunu alın ve bir isim yazın.
-- [ ] Girilen metnin sağladığınız adı içerip içermediğini kontrol etmek için bir assertion kullanın. (İpucu: .should assertion)
-- [ ] `email` inputunu alın ve bir email adresi girin
-- [ ] `şifre` inputunu alın ve bir şifre girin
-- [ ] Kullanıcının kullanım koşulları kutusunu işaretlediğini kontrol edecek bir test oluşturun
-- [ ] Kullanıcının form verilerini gönderip gönderemeyeceğini test edin 
-- [ ] Bir input boş bırakılırsa form doğrulamasını test edin
+- [ ] Yup'u kullanarak, _en az_ 2 adet doğrulama ve hata doğrulamada varsa ekranda gösterilecek hata mesajı ekleyin.
+
+#### POST Request Oluşturun
+
+Verileri "POST" edebilmek, beceri düzeyiniz ne olursa olsun, herhangi bir geliştiricinin temel becerisi olmalıdır.
+
+- [ ] Form verilerinizi "axios"u kullanarak aşağıdaki uç noktaya gönderen  bir "POST" isteği oluşturun: _`https://reqres.in/api/users`_
+- [ ] Doğru cevabı aldığınızı görebilmek için `console.log()` kullanın
+
+(Not: Merak edenler için, bu ödevin API'si için [reqres.in](https://reqres.in/) kullanıyoruz. Regres gönderdiğimiz herhangi bir veri için bir "POST" isteğini simüle etmemize izin veren ücretsiz bir API'dir. Oldukça harika!
+
+#### Döndürülen Verileri Ekranda Görüntüle
+
+Verileri çektiğinizde bunları kullanmak isteyeceksiniz değil mi? O zaman uygulamanızda kullanıcıların bir listesini görüntüleyin.
+
+- [ ] `kullanıcılar` adında bir özellik ekleyin, boş bir dizi olarak yüklensin
+- [ ] Yeni kullanıcı eklemek ve `kullanıcılar` stateini güncellemek için her seferinde bir `POST` request atın 
+- [ ] Uygulamanızda `kullanıcılar` ı render edin. POST request cevabını düzgün görüntülemek için <pre> html etiketini ve JSON.stringify() yöntemini kullanabilirsiniz.
 
 ### Görev 3: Esnek Görevler
 
-Vaktiniz varsa, son birkaç gündür bu kod üzerinde çalışırken karşılaştığınız yaygın sorunlara dayalı olarak farklı testler yazın ve çalıştırın.
+Aşağıda, projeniz için MVP yi sağladıktan sonra denemeniz gereken zorlu hedefler verilmiştir:
 
-## SSS
-
-**Ya tüm testlerim geçemezse?**
-
-*Önceki derslerdeki kodunuzun kalitesine bağlı olarak testleriniz geçemeyebilir. Bu oldukça iyi! Bu projenin amacı, hataları işaret eden testler tasarlamaktır. Bu nedenle, test kodunuzla ilgili değil, web sayfası kodunuzla ilgili sorunlar nedeniyle testlerin başarısız olduğundan emin olmanız gerekir.*
-
-****
-
-## Kaynaklar
-
-📚 [Cypress Dökümanı](https://www.cypress.io/how-it-works/)
-
-🤔 [Blog: Cypress (Javascript) ile nasıl UI test yazarız ?](https://medium.com/testkaynak/ui-test-nas%C4%B1l-yaz%C4%B1l%C4%B1r-cypress-javascript-ile-nas%C4%B1l-ui-test-yazar%C4%B1z-efe8e1699d5e#:~:text=1%2D%20Google%20url'ine%20ba%C4%9Flan%C4%B1yor,butonunun%20%C3%BCzerine%20gidip%20butona%20t%C4%B1kl%C4%B1yor.)
+- [ ] Uygulamanıza basit stiller ekleyin. İstediğiniz stilleme yöntemleriyle projenize güzel bir görüntü katın.
+- [ ] Formunuza bir dropdown menü ekleyin. Stateinize bir `rol` değeri atayın ve kullanıcılara değişik roller atamak için dropdown ekleyin.
+- [ ] Formunuza istediğiniz 3 yeni input (doğrulama ve hata mesajlarıyla birlikte) ekleyin
+- [ ] Eğer bir kullanıcı `waffle@syrup.com` mail adresini girerse, mevcut doğrulayıcınıza, bu email adresinin daha önce eklendiği uyarısını verecek bir handling ekleyin.
 
