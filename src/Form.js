@@ -18,9 +18,9 @@ const MyForm = (props) => {
 
     const uyeFormSchema = Yup.object().shape({
         name: Yup.string().required("Ürün ismi boş bırakılamaz!").min(5, "İsim Soyisim minimum 5 karakter olmalı!"),
-        email: Yup.string().email("Geçerli bir email giriniz."),
+        email: Yup.string().required("Email boş bırakılamaz!").email("Geçerli bir email giriniz."),
         password: Yup.string().required("Geçerli bir şifre giriniz!").min(8, "Şifre en az 8 karakter olmalıdır!"),
-        termAccept: Yup.boolean().oneOf([true], "The terms and conditions must be accepted.")
+        termAccept: Yup.boolean().oneOf([true], "Koşullar ve şartlar kabul edilmelidir.")
     });
 
     const handleChange = (e) => {
@@ -120,7 +120,7 @@ const MyForm = (props) => {
                     Koşulları kabul ediyorum.
                 </Label>
             </FormGroup>
-            <Button onClick={handleSubmit} disabled={!valid}>
+            <Button name="submit" onClick={handleSubmit} disabled={!valid}>
                 Gönder
             </Button>
 
